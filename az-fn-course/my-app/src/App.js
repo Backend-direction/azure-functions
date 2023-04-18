@@ -18,7 +18,7 @@ class App extends Component {
         user_location: '',
         user_interests: '',
         all_user_data: [],
-        current_user: '<SAMPLE USER EMAIL FROM YOUR DATABASE>'
+        current_user: 'model2'
     };
 
     componentDidMount() {
@@ -28,7 +28,7 @@ class App extends Component {
     getUserData () {
         api({
             method: 'get',
-            url: '/GetData?email=' + this.state.current_user
+            url: '/GetData?name=' + this.state.current_user
         }).then((response) => {
             if(response.data[0])
             {
@@ -47,7 +47,7 @@ class App extends Component {
     saveUserData() {
         api({
             method: 'put',
-            url: '/SaveData?email=' + this.state.current_user,
+            url: '/SaveData?name=' + this.state.current_user,
             data: {
                 location: this.state.user_location,
                 interests: this.state.user_interests
@@ -64,7 +64,7 @@ class App extends Component {
     deleteUserData() {
         api({
             method: 'delete',
-            url: '/DeleteData?email=' + this.state.current_user
+            url: '/DeleteData?name=' + this.state.current_user
         }).then((response) => {
             this.setState({
                 user_location: '',
@@ -166,7 +166,7 @@ class App extends Component {
                                 this.state.all_user_data.map(( listValue, index ) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{listValue.email}</td>
+                                            <td>{listValue.name}</td>
                                             <td>{listValue.interests}</td>
                                         </tr>
                                     );

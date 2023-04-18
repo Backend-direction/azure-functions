@@ -14,5 +14,5 @@ const constants = {
  */
 export default axios.create({
     baseURL: constants.api.baseURL,
-    headers: {'Ocp-Apim-Subscription-Key': '<API SUBSCRIPTION KEY>' }
+    headers: {'Ocp-Apim-Subscription-Key': '' }
 });
